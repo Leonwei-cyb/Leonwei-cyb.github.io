@@ -16,7 +16,7 @@ function draw() {
 
   
 
-    rect(-20, windowHeight/1.2, 2000, 200);
+  ellipse(-20, windowHeight/1.2, 2000, 200);
   if (keyIsPressed) {
     if (key === "a") {
       rY += 10;
@@ -24,8 +24,9 @@ function draw() {
     }
   }
   rX = mouseX;
-
-  fill(50, 150, 255);
+// Draw retangle
+  fill(255, 213, 0);
   rect(rX, rY, 70, 25, 10, 0);
-
+  fill(255, 213, 0);
+  ellipse(50, 50, 80, 80);
 }
