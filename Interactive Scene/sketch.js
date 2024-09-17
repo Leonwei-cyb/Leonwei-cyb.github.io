@@ -12,7 +12,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(255, 214, 131);
 
   
 
@@ -25,6 +25,13 @@ function draw() {
   }
   rX = mouseX;
 // Draw retangle
+  fill(200, 100, 100, 150);
+  noStroke();
+  ellipse(width * 0.5, height, 1000, 300)
+  ellipse(width * 0.3, height 800, 250)
+  ellipse(width * 0.5, height - 50, 150, 150)
+  fill(255, 213, 0);
+  ellipse(-20, windowHeight / 1.2, 2000, 200);
   fill(255, 213, 0);
   rect(rX, rY, 70, 25, 10, 0);
   fill(255, 213, 0);
