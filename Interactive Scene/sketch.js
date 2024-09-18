@@ -16,24 +16,49 @@ function draw() {
 
   
 
-  ellipse(-20, windowHeight/1.2, 2000, 200);
-  if (keyIsPressed) {
-    if (key === "a") {
-      rY += 10;
-      if (rY > height) rY = 0;
-    }
-  }
+  
   rX = mouseX;
 // Draw retangle
-  fill(200, 100, 100, 150);
   noStroke();
-  ellipse(width * 0.5, height, 1000, 300)
-  ellipse(width * 0.3, height 800, 250)
-  ellipse(width * 0.5, height - 50, 150, 150)
-  fill(255, 213, 0);
-  ellipse(-20, windowHeight / 1.2, 2000, 200);
-  fill(255, 213, 0);
+  
+  
+  //highest
+  fill(247, 210, 85);
+  ellipse(1000, 700, 2000, 500)
+  
+  fill(255, 162, 0);
+  
   rect(rX, rY, 70, 25, 10, 0);
+  //sun
   fill(255, 213, 0);
   ellipse(50, 50, 80, 80);
+  //middle elipse
+  fill(226, 197, 101);
+  ellipse(600, 800, 2000, 500)
+  //loweset elipse
+  fill(252, 222, 123);
+  ellipse(1000, 900, 2000, 500)
+  triangle(30, 75, 58, 20, 86, 75);
+  // Pig's head
+  fill(255, 182, 193); 
+  rect(300, 300, 200, 200, 20); 
+  
+  // Pig's ears
+  fill(255, 105, 180); 
+  rect(260, 260, 60, 60, 10); 
+  rect(380, 260, 60, 60, 10); 
+  
+  // Pig's eyes
+  fill(0); 
+  ellipse(330, 350, 30, 40); 
+  ellipse(370, 350, 30, 40); 
+  
+  // Pig's nose
+  fill(255, 105, 180); 
+  ellipse(350, 400, 80, 60);
+  
+  // Pig's nostrils
+  fill(0);
+  ellipse(335, 400, 10, 20); 
+  ellipse(365, 400, 10, 20); 
 }
