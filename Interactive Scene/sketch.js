@@ -8,7 +8,7 @@
 let rX = 50; let rY = 50;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth/2, windowHeight);
 }
 
 function draw() {
@@ -20,20 +20,30 @@ function draw() {
   rX = mouseX;
 // Draw retangle
   noStroke();
-  
-  
+    // Small Pyramid
+  fill(255, 229, 180);
+  triangle(50, 600, 125, 400, 200, 600); 
+  // Small Pyramid Shadow
+  fill(200, 179, 140); 
+  triangle(50, 600, 125, 400, 100, 600); 
+  // Large Pyramid
+  fill(255, 229, 180);
+  triangle(400, 500, 600, 140, 800, 500); 
+ // Large Pyramid Shadow
+  fill(200, 179, 140); 
+  triangle(400, 500, 600, 140, 500, 500); 
   //highest
-  fill(247, 210, 85);
+  fill(247, 201, 74);
   ellipse(1000, 700, 2000, 500)
   
   fill(255, 162, 0);
   
   rect(rX, rY, 70, 25, 10, 0);
   //sun
-  fill(255, 213, 0);
+  fill(255, 85, 0);
   ellipse(50, 50, 80, 80);
   //middle elipse
-  fill(226, 197, 101);
+  fill(255, 210, 82);
   ellipse(600, 800, 2000, 500)
   //loweset elipse
   fill(252, 222, 123);
@@ -61,4 +71,5 @@ function draw() {
   fill(0);
   ellipse(335, 400, 10, 20); 
   ellipse(365, 400, 10, 20); 
+  
 }
