@@ -26,7 +26,7 @@ function draw() {
       background(255, 165 , 0); // last background
       break;
   }
-  // set mouse location with rX and rX
+  // set mouse location with rX and rY
   let rX = mouseX;
   let rY = mouseY;
   
