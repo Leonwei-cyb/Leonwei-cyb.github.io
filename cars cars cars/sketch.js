@@ -15,6 +15,12 @@ function setup() {
 function draw() {
   background(220);
   drawRoad();
+  for(let i = 0; i<eastbound.length; i++){
+    eastbound[i].action();
+  }
+}
+function mouseClicked(){
+  eastbound.push(new Vehicle(random(mouseX), mouseY, 1));
 }
 
 function drawRoad() {
@@ -28,22 +34,33 @@ function drawRoad() {
   }
 }
 class Vehicle {
-  constructor(direction) {
-    this.type = random([0, 1]); 
-    this.color = color(random(255), random(255), random(255)); 
-    this.x = direction === 1 ? random(-width, 0) : random(width, 2 * width); 
-    this.y = direction === 1 ? random(height / 3 + 20, height / 2 - 20) : random(height / 2 + 20, 2 * height / 3 - 20);
-    this.direction = direction;  
-    this.xSpeed = this.direction === 1 ? random(2, 5) : random(-5, -2);  
+  constructor(x, y, dir) {
+    this.x = x;
+    this.y = y;
+    this.dir = dir;
+    this.c = color(random(255), random(255), random(255)); 
+    this.type = int(random(2)); 
   }
-  display() {
-    fill(this.color);
-    if (this.type === 0) {
-      // Draw a car
-      rect(this.x, this.y, 50, 25);
-    } else {
-      // Draw a truck/van
-      rect(this.x, this.y, 80, 30);
+  action(){
+    this.display();
+  }
+  display(){
+    if(this.type===0){
+      this.drawCar();
     }
+
+    else if (this.type === 1){
+      this.drawTruck();
+    }
+  } 
+  drawCar(){
+    fill(this.c);
+    rect(this.x,this.y,100,40);
+
+  }
+
+  drawTruck(){
+    fill(this.c);
+    ellipse(this.x,this.y, 100,40);
   }
 }
