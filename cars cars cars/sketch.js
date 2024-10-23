@@ -10,6 +10,10 @@ let eastbound = [];
 let westbound = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  for (let i = 0; i < 20; i++) {
+    eastbound.push(new Vehicle(random(width), random(250, 400), 1));
+    westbound.push(new Vehicle(random(width), random(400, 550), 0));
+  }
 }
 
 function draw() {
@@ -18,10 +22,13 @@ function draw() {
   for(let i = 0; i<eastbound.length; i++){
     eastbound[i].action();
   }
+  for(let i = 0; i<westbound.length; i++){
+    westbound[i].action();
+  }
 }
-function mouseClicked(){
-  eastbound.push(new Vehicle(random(mouseX), mouseY, 1));
-}
+//function mouseClicked(){
+  //eastbound.push(new Vehicle(random(mouseX), mouseY, 1));
+//}
 
 function drawRoad() {
   fill(0);
@@ -40,8 +47,10 @@ class Vehicle {
     this.dir = dir;
     this.c = color(random(255), random(255), random(255)); 
     this.type = int(random(2)); 
+    this.XSpeed = (1, 10);
   }
   action(){
+    this.move();
     this.display();
   }
   display(){
@@ -62,5 +71,18 @@ class Vehicle {
   drawTruck(){
     fill(this.c);
     ellipse(this.x,this.y, 100,40);
+  }
+  move() {
+    if (this.dir === 1) {
+      this.x += this.xSpeed;
+    } else {
+      this.x -= 5;
+    }
+
+    if (this.x > width) {
+      this.x = 0;
+    } else if (this.x < 0) {
+      this.x = 5;
+    }
   }
 }

@@ -33,12 +33,15 @@ function staircase(){
   }
 }
 
-// Checks if space button is pressed to change sun
-function keyPressed(key) {
-  if (key ===  RIGHT_ARROW) {
-    print()
-    rectWidth += 1
-  } else if (key === LEFT_ARROW ) {
-    rectWidth -= 1
+//
+function keyPressed() {
+  if (keyCode ===  RIGHT_ARROW) {
+    rectWidth = min(rectWidth + 1, width);
+  } else if (keyCode === LEFT_ARROW) {
+    rectWidth = max(rectWidth - 1, 1);
   }
+  return
+}
+function drawFlag(x,y) {
+  
 }
