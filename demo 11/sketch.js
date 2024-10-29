@@ -47,5 +47,10 @@ moveBy(){
   this.y += yspeed;
   this.noiseX += this.offset;
   this.noiseY += this.offset;
-  
+
+
+  if(this.y < 0) this.x += width;
+  if(this.x > width) this.x -= width;
+  if(this)
+    
 }
