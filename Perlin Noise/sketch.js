@@ -23,7 +23,7 @@ function draw() {
 function staircase(){
   let xpan = xStart;
   let highestpeak = 0;
-  let heightloc = 0;
+  let highestX = 0;
   let averageheight = 0;
   //use a for loop to draw a series of 
   //rectangles for use as terrain
@@ -39,14 +39,15 @@ function staircase(){
     rect(x, height, rectWidth, -rectHeight);
     xpan += 0.01
     if (rectHeight > highestpeak){
-      
+      highestpeak = rectHeight;
+      highestX = x;
 
     }
   }
-  let averageheight = highestpeak/count;
-    stroke()
-    fill("red")
-    rect(30, 20, 55, 40)
+  //let averageheight = highestpeak/count;
+    //stroke()
+    //fill("red")
+   // rect(30, 20, 55, 40)
 }
 
 //

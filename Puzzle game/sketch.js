@@ -28,7 +28,7 @@ function draw() {
 
 function mousePressed(){
   // cross-shaped pattern flips on a mouseclick. Boundary conditions are checked within the flip function to ensure in-bounds access for array
-  if (keyIsDown === SHIFT) {
+  if (keyIsDown(SHIFT)) {
     flip(currentCol, currentRow);
   } else {
     flip(currentCol, currentRow);
