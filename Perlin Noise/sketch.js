@@ -24,7 +24,8 @@ function staircase(){
   let xpan = xStart;
   let highestpeak = 0;
   let highestX = 0;
-  let averageheight = 0;
+  let totalHeight = 0;
+  let count = 0;
   //use a for loop to draw a series of 
   //rectangles for use as terrain
   //randomSeed(1); //only for random()
@@ -35,19 +36,24 @@ function staircase(){
     let rectHeight = noise(xpan);
     
     rectHeight = map(rectHeight, 0, 1, 500, 100)
-
+    
+    noFill();
+    stroke(0);
     rect(x, height, rectWidth, -rectHeight);
     xpan += 0.01
+
+
+    totalHeight += rectHeight;
+    count++;
     if (rectHeight > highestpeak){
       highestpeak = rectHeight;
       highestX = x;
-
     }
   }
-  //let averageheight = highestpeak/count;
+  //let averageheight = totalHeight / count;
     //stroke()
     //fill("red")
-   // rect(30, 20, 55, 40)
+    //line(0, averageheight, width,)
 }
 
 //
@@ -59,7 +65,7 @@ function keyPressed() {
   }
   return
 }
-function drawFlag() {
+function drawFlag(x,y) {
   stroke()
   line(x, y, x, y, x, y)
   fill(0,0,0);
