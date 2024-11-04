@@ -1,9 +1,9 @@
-// Project Title
-// Your Name
-// Date
+// Perlin Noise
+// Leon Wei
+// November 4th 2024
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// - Made Perlin Noise
 let rectWidth = 1;
 let speed = 0.01;
 let xStart = 0;
@@ -26,18 +26,14 @@ function staircase(){
   let highestX = 0;
   let totalHeight = 0;
   let count = 0;
-  //use a for loop to draw a series of 
-  //rectangles for use as terrain
-  //randomSeed(1); //only for random()
   
   for(let x = 0; x <= width; x += rectWidth){
     noFill();
-    //generate a random height for each rect
     let rectHeight = noise(xpan);
     
     rectHeight = map(rectHeight, 0, 1, 500, 100)
     
-    noFill();
+    //noFill();
     stroke(0);
     rect(x, height, rectWidth, -rectHeight);
     xpan += 0.01
@@ -45,15 +41,19 @@ function staircase(){
 
     totalHeight += rectHeight;
     count++;
+    
+    
     if (rectHeight > highestpeak){
       highestpeak = rectHeight;
       highestX = x;
     }
   }
-  //let averageheight = totalHeight / count;
-    //stroke()
-    //fill("red")
-    //line(0, averageheight, width,)
+  
+  let averageHeight = totalHeight / count;
+    stroke(255,0,0);
+    line(0, height - averageHeight, width,  height - averageHeight);
+    
+    drawFlag(highestX, height - highestpeak);
 }
 
 //
@@ -66,9 +66,10 @@ function keyPressed() {
   return
 }
 function drawFlag(x,y) {
-  stroke()
-  line(x, y, x, y, x, y)
-  fill(0,0,0);
+  stroke(0);
+  line(x, y, x, y - 20);
+
+  fill(250,0,0);
   noStroke();
-  triangle(x, y, x, y, x, y);
+  triangle(x, y - 20, x +10, y - 15, x, y -10);
 }
