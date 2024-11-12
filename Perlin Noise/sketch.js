@@ -21,6 +21,7 @@ function draw() {
 
 
 function staircase(){
+  let xpan = xStart;
   let highestpeak = 0; // variable to track highest peak
   let highestX = 0; // x coordinate of highest peak
   let totalHeight = 0; // total height of all rectangles
@@ -28,7 +29,7 @@ function staircase(){
   // draw terrain
   for(let x = 0; x <= width; x += rectWidth){
     noFill();
-    let rectHeight = noise(x/100); // generates a height
+    let rectHeight = noise(xpan); // generates a height
     
     rectHeight = map(rectHeight, 0, 1, 500, 100) // maps noise value
     
@@ -38,7 +39,7 @@ function staircase(){
     // add rectheight for total height
     totalHeight += rectHeight;
     count++;
-    
+    xpan += 0.01
     // checks highest peak
     if (rectHeight > highestpeak){
       highestpeak = rectHeight;
@@ -60,7 +61,6 @@ function keyPressed() {
   } else if (keyCode === LEFT_ARROW) { // decrease rectangle width
     rectWidth = max(rectWidth - 1, 1);
   }
-  return
 }
 
 // function to draw flag at x and y position

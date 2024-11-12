@@ -22,7 +22,14 @@ function draw() {
   background(220);
   determineActiveSquare();   //figure out which tile the mouse cursor is over
   drawGrid();                //render the current game board to the screen (and the overlay)
+  if (checkWinCon()) {
+    fill(100);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    text("YOU WIN", width/2, height/2);
+  }
 }
+
 
 
 
@@ -72,3 +79,12 @@ function drawGrid(){
 }
 
 
+function checkWinCon() {
+  let firstValue = gridData [0][0];
+  for (let row of gridData) {
+    for (let value of row) {
+      if (value !== firstValue) return false;
+    }
+  }
+  return true;
+}
