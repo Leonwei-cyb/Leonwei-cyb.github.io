@@ -16,6 +16,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   rectWidth = width/NUM_COLS;
   rectHeight = height/NUM_ROWS;
+  randomize()
 }
 
 function draw() {
@@ -88,3 +89,12 @@ function checkWinCon() {
   }
   return true;
 }
+function randomize() {
+
+  for (let row = 0; row < NUM_ROWS; row++) {
+    for (let col = 0; col < NUM_COLS; col++) {
+      gridData[row][col] = random([0, 255]);
+    }
+  }
+}
+
