@@ -75,6 +75,12 @@ function drawGrid(){
     for (let y = 0; y < NUM_ROWS; y++){
       fill(gridData[y][x]); 
       rect(x*rectWidth, y*rectHeight, rectWidth, rectHeight);
+      
+      if (overlay(x,y)) {
+        fill(100);
+        rect(x*rectWidth, y*rectHeight, rectWidth, rectHeight);
+
+      }
     }
   }
 }
@@ -97,4 +103,28 @@ function randomize() {
     }
   }
 }
+function overlay(x,y) {
+  if (x === currentCol && y === currentRow) {
+    return true;
+  }
+  if (x === currentCol - 1 && y === currentRow) {
+    return true;
+  }
+  if (x === currentCol + 1 && y === currentRow) {
+    return true;
+  }
+  if (x === currentCol && y === currentRow - 1) {
+    return true;
+  }
+  if (x === currentCol && y === currentRow + 1) {
+    return true;
+  }
+  return false;
+}
+function determinesquare() {
 
+}
+
+function keypress() {
+  //if keypress == 'SPACE'
+}
