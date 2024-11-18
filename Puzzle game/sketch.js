@@ -104,6 +104,11 @@ function randomize() {
   }
 }
 function overlay(x,y) {
+  if (keyIsDown(SHIFT)) {
+    if(x === currentCol && y === currentRow)
+      fill(100);
+      rect(x*rectWidth, y*rectHeight, rectWidth, rectHeight);
+  }
   if (x === currentCol && y === currentRow) {
     return true;
   }

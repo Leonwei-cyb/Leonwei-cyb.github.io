@@ -11,8 +11,10 @@ let westbound = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < 20; i++) {
-    eastbound.push(new Vehicle(random(width), random(250, 400), 1));
-    westbound.push(new Vehicle(random(width), random(400, 550), 0));
+    eastbound.push(new Vehicle(random(width), random(height / 2 + 180), random(250, 400), 1));
+  }  
+  for (let i = 0; i < 20; i++) {
+    westbound.push(new Vehicle(random(-100,width), random(height / 2 + 180), random(400, 550), 0));
   }
 }
 
@@ -80,9 +82,10 @@ class Vehicle {
     }
 
     if (this.x > width) {
-      this.x = 0;
+      this.x = -100;
     } else if (this.x < 0) {
-      this.x = 5;
+      this.x = width;
     }
+    
   }
 }
