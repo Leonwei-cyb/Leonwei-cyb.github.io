@@ -14,7 +14,7 @@ function setup() {
     eastbound.push(new Vehicle(random(width), random(height / 2 + 180), random(250, 400), 1));
   }  
   for (let i = 0; i < 20; i++) {
-    westbound.push(new Vehicle(random(-100,width), random(height / 2 + 180), random(400, 550), 0));
+    westbound.push(new Vehicle(random(width), random(height / 2 + 180), random(400, 550), 0));
   }
 }
 

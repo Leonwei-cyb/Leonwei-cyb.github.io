@@ -10,7 +10,7 @@ let gridData = [[0,0,0,0,0],
                 [255,255,255,0,0]];
 
 
-
+let FlipMode = "cross";
 function setup() {
   // Determine the size of each square. Could use windowHeight,windowHeight  for Canvas to keep a square aspect ratio
   createCanvas(windowWidth, windowHeight);
@@ -24,7 +24,7 @@ function draw() {
   determineActiveSquare();   //figure out which tile the mouse cursor is over
   drawGrid();                //render the current game board to the screen (and the overlay)
   if (checkWinCon()) {
-    fill(100);
+    fill(120);
     textSize(60);
     textAlign(CENTER, CENTER);
     text("YOU WIN", width/2, height/2);
@@ -39,11 +39,18 @@ function mousePressed(){
   if (keyIsDown(SHIFT)) {
     flip(currentCol, currentRow);
   } else {
+    if (FlipMode === "cross") {
     flip(currentCol, currentRow);
     flip(currentCol - 1, currentRow);
     flip(currentCol + 1, currentRow);
     flip(currentCol, currentRow - 1);
     flip(currentCol, currentRow + 1);
+    } else if (FlipMode === "square") {
+      flip(currentCol, currentRow);
+      flip(currentCol + 1, currentRow);
+      flip(currentCol, currentRow + 1);
+      flip(currentCol + 1, currentRow + 1);
+    }
   }
 }
 function Cheatercheater(){
@@ -76,8 +83,8 @@ function drawGrid(){
       fill(gridData[y][x]); 
       rect(x*rectWidth, y*rectHeight, rectWidth, rectHeight);
       
-      if (overlay(x,y)) {
-        fill(100);
+      if (Overlay(x,y)) {
+        fill(215, 240, 189);
         rect(x*rectWidth, y*rectHeight, rectWidth, rectHeight);
 
       }
@@ -103,33 +110,35 @@ function randomize() {
     }
   }
 }
-function overlay(x,y) {
+function Overlay(x,y) {
   if (keyIsDown(SHIFT)) {
-    if(x === currentCol && y === currentRow)
-      fill(100);
-      rect(x*rectWidth, y*rectHeight, rectWidth, rectHeight);
-  }
-  if (x === currentCol && y === currentRow) {
-    return true;
-  }
-  if (x === currentCol - 1 && y === currentRow) {
-    return true;
-  }
-  if (x === currentCol + 1 && y === currentRow) {
-    return true;
-  }
-  if (x === currentCol && y === currentRow - 1) {
-    return true;
-  }
-  if (x === currentCol && y === currentRow + 1) {
-    return true;
-  }
-  return false;
-}
-function determinesquare() {
+    if (x === currentCol && y === currentRow) {
+      return true;
+    }
+  } else {
 
+    if (x === currentCol && y === currentRow) {
+      return true;
+    }
+    if (x === currentCol - 1 && y === currentRow) {
+      return true;
+    }
+    if (x === currentCol + 1 && y === currentRow) {
+      return true;
+    }
+    if (x === currentCol && y === currentRow - 1) {
+      return true;
+    }
+    if (x === currentCol && y === currentRow + 1) {
+      return true;
+    }
+  }  
+  return false;
 }
 
 function keypress() {
-  //if keypress == 'SPACE'
+  if (key === ' ') {
+    FlipMode = (FlipMode === "")
+  }
+  
 }
