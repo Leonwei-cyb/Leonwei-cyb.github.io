@@ -21,7 +21,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   rectWidth = width/NUM_COLS;
   rectHeight = height/NUM_ROWS; 
-  randomize() // randomize grid
+  randomize(); // randomize grid
 }
 
 function draw() {
@@ -41,16 +41,18 @@ function draw() {
 
 function mousePressed(){
   // cross-shaped pattern flips on a mouseclick. Boundary conditions are checked within the flip function to ensure in-bounds access for array
-  if (keyIsDown(SHIFT)) { // cheater cheater flips one square
+  if (keyIsDown(SHIFT)){ // cheater cheater flips one square
     flip(currentCol, currentRow);
-  } else {
-    if (FlipMode === "cross") { // flips cross
-    flip(currentCol, currentRow);
-    flip(currentCol - 1, currentRow);
-    flip(currentCol + 1, currentRow);
-    flip(currentCol, currentRow - 1);
-    flip(currentCol, currentRow + 1);
-    } else if (FlipMode === "square") { // flips square
+  } 
+  else{
+    if(FlipMode === "cross"){ // flips cross
+      flip(currentCol, currentRow);
+      flip(currentCol - 1, currentRow);
+      flip(currentCol + 1, currentRow);
+      flip(currentCol, currentRow - 1);
+      flip(currentCol, currentRow + 1);
+    } 
+    else if(FlipMode === "square"){ // flips square
       flip(currentCol, currentRow);
       flip(currentCol + 1, currentRow);
       flip(currentCol, currentRow + 1);
