@@ -28,9 +28,9 @@ function draw() {
     westbound[i].action();
   }
 }
-//function mouseClicked(){
-  //eastbound.push(new Vehicle(random(mouseX), mouseY, 1));
-//}
+function mouseClicked(){
+  eastbound.push(new Vehicle(random(mouseX), mouseY, 1));
+}
 
 function drawRoad() {
   fill(0);
@@ -42,6 +42,7 @@ function drawRoad() {
     line(i, height / 2, i + 20, height / 2);
   }
 }
+
 class Vehicle {
   constructor(x, y, dir, speed) {
     this.x = x;
@@ -54,6 +55,9 @@ class Vehicle {
   action(){
     this.move();
     this.display();
+    if (random(100) < 1) this.speedUp();
+    if (random(100) < 1) this.speedDown();
+    if (random(100) < 1) this.changeColor();
   }
   display(){
     if(this.type===0){
@@ -63,17 +67,23 @@ class Vehicle {
     else if (this.type === 1){
       this.drawTruck();
     }
-  } 
+  }
+  
   drawCar(){
     fill(this.c);
     
     ellipse(this.x,this.y, 100,40);
+    fill(255,0,0);
+    ellipse(this.x - 20, this.y + 35, 20, 20);
+    ellipse(this.x + 60, this.y + 35, 20, 20);
     
   }
 
   drawTruck(){
     fill(this.c);
     rect(this.x,this.y,100,40);
+    ellipse(this.x + 10, this.y + 45, 20, 20); 
+    ellipse(this.x + 125, this.y + 45, 20, 20);
   }
   move() {
     this.x += this.dir * this.xSpeed;
@@ -83,6 +93,18 @@ class Vehicle {
     } else if (this.x < -100) {
       this.x = width;
     }
-    
+  }
+  speedUp() {
+    if (this.xSpeed < 15) {
+      this.xSpeed += 0.5;
+    }
+  }
+  speedDown() {
+    if (this.xSpeed > 0) {
+      this.xSpeed -= 0.5;
+    }
+  }
+  changeColor() {
+    this.c = color(random(255), random(255), random(255));
   }
 }
