@@ -11,10 +11,10 @@ let westbound = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < 20; i++) {
-    eastbound.push(new Vehicle(random(width), random(height / 2 + 10, height / 2 +180), 1, random(2,6)));
+    eastbound.push(new Vehicle(random(width), random(height / 2 + 20, height / 2 +180), 1, random(2,6)));
   }  
   for (let i = 0; i < 20; i++) {
-    westbound.push(new Vehicle(random(width), random(height / 2 - 10, height / 2 - 180), -1, random(2,6)));
+    westbound.push(new Vehicle(random(width), random(height / 2 - 40, height / 2 - 180), -1, random(2,6)));
   }
 }
 
@@ -26,10 +26,16 @@ function draw() {
   }
   for(let i = 0; i<westbound.length; i++){
     westbound[i].action();
+  
   }
 }
 function mouseClicked(){
-  eastbound.push(new Vehicle(random(mouseX), mouseY, 1));
+  if (keyIsPressed && keyCode === SHIFT) {
+    westbound.push(new Vehicle(random(width), random(height / 2 + 20, height / 2 +180), 1, random(2,6)));
+  }
+  else {
+    eastbound.push(new Vehicle(random(width) , random(height / 2 - 40, height / 2 - 180), -1, random(2,6)));
+  }
 }
 
 function drawRoad() {
@@ -72,18 +78,19 @@ class Vehicle {
   drawCar(){
     fill(this.c);
     
-    ellipse(this.x,this.y, 100,40);
+    ellipse(this.x,this.y, 100, 40);
     fill(255,0,0);
-    ellipse(this.x - 20, this.y + 35, 20, 20);
-    ellipse(this.x + 60, this.y + 35, 20, 20);
+    ellipse(this.x - 40, this.y + 15, 20, 20);
+    ellipse(this.x + 40, this.y + 15, 20, 20);
     
   }
 
   drawTruck(){
     fill(this.c);
+    rect(this.x + 50,this.y, 40, - 30)
     rect(this.x,this.y,100,40);
     ellipse(this.x + 10, this.y + 45, 20, 20); 
-    ellipse(this.x + 125, this.y + 45, 20, 20);
+    ellipse(this.x + 100, this.y + 45, 20, 20);
   }
   move() {
     this.x += this.dir * this.xSpeed;
