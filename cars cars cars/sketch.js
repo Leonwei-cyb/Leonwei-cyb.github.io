@@ -115,3 +115,34 @@ class Vehicle {
     this.c = color(random(255), random(255), random(255));
   }
 }
+
+class trafficLight {
+  constructor() {
+    this.state = "green";
+  } 
+  toggle() {
+    if(this.state === "green") {
+      this.state = "green";
+
+    } 
+    else {
+      this.state = "red";
+    }
+  }
+  display(){
+    fill("green");
+      rect(width/2, height/2, 50, 100);
+      if(this.state === "green") {
+
+      }
+
+
+
+    }
+  }
+
+
+function keyIsPressed() {
+  if (key === " ")
+    trafficLight
+}
