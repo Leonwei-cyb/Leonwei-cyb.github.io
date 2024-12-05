@@ -8,6 +8,7 @@
 
 let eastbound = [];
 let westbound = [];
+let trafficlight;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   for (let i = 0; i < 20; i++) {
@@ -16,6 +17,8 @@ function setup() {
   for (let i = 0; i < 20; i++) {
     westbound.push(new Vehicle(random(width), random(height / 2 - 40, height / 2 - 180), -1, random(2,6)));
   }
+  trafficLight = new trafficlight();
+  trafficLight.state = "green";
 }
 
 function draw() {
@@ -48,6 +51,9 @@ function drawRoad() {
     line(i, height / 2, i + 20, height / 2);
   }
 }
+//function keyIsPressed() 
+  //if (key === " ")
+ //   trafficLight
 
 class Vehicle {
   constructor(x, y, dir, speed) {
@@ -122,27 +128,25 @@ class trafficLight {
   } 
   toggle() {
     if(this.state === "green") {
-      this.state = "green";
+      this.state = "red";
 
     } 
     else {
-      this.state = "red";
+      this.state = "green";
     }
   }
   display(){
-    fill("green");
-      rect(width/2, height/2, 50, 100);
-      if(this.state === "green") {
+    if(this.state === "green") {
+      fill("green");
+    }
+    else {
+      fill("red");
+    }
 
-      }
+    rect(width / 2 - 50, height / 2 - 100, 100, 200);
+      
 
 
 
     }
-  }
-
-
-function keyIsPressed() {
-  if (key === " ")
-    trafficLight
-}
+  }  

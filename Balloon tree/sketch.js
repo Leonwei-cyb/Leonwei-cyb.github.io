@@ -33,6 +33,11 @@ function drawTree(x1, y1, angle, depth) {
 
     //for a 2-branch tree:
     drawTree(x2, y2, angle-18, depth-1);
+    drawTree(x2, y2,angle,depth-1);
     drawTree(x2, y2, angle+18, depth-1);
+
   }
+}
+function drawleaf(){
+  
 }
